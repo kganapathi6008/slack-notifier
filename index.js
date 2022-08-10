@@ -1,6 +1,6 @@
 const { IncomingWebhook } = require('@slack/webhook');
 
-const SLACK_WEBHOOK_URL = 'https://hooks.slack.com/services/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'; // Enter Your Slack Webhook URL here
+const SLACK_WEBHOOK_URL = ''; // Enter Your Slack Webhook URL here
 
 const webhook = new IncomingWebhook(SLACK_WEBHOOK_URL);
 
@@ -9,7 +9,7 @@ module.exports.subscribe = (event, callback) => {
   const build = eventToBuild(event.data);
 
   // Skip if the current status is not in the status list.
-  // Add additional statues to list if you'd like:
+  // Add additional status to list if you'd like:
   // SUCCESS, FAILURE, INTERNAL_ERROR, TIMEOUT, CANCELLED
   const status = [
     'SUCCESS',
