@@ -5,7 +5,7 @@ const SLACK_WEBHOOK_URL = ''; // Enter Your Slack Webhook URL here
 const webhook = new IncomingWebhook(SLACK_WEBHOOK_URL);
 
 // subscribe is the main function called by Cloud Functions.
-module.exports.subscribe = (event, callback) => {
+module.exports.subscribe = (event) => {
   const build = eventToBuild(event.data);
 
   // Skip if the current status is not in the status list.
@@ -18,10 +18,6 @@ module.exports.subscribe = (event, callback) => {
     'TIMEOUT',
     'CANCELLED',
   ];
-
-  if (status.indexOf(build.status) === -1) {
-    return callback();
-  }
 
   // Send message to Slack.
   const message = createSlackMessage(build);
